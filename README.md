@@ -22,7 +22,7 @@ npm test // Starts the Karma in watch mode to execute the tests
 ## Create translations
 The Script is under src/assets/translations
 ```bash
-node json-excel-synchronizer.js
+npm run translations
 ```
 ### Working with translations
 
