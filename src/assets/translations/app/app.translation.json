@@ -1,0 +1,14 @@
+{
+  "de": {
+    "app.translation": "Deutsch",
+    "app.title": "Title der App"
+  },
+  "fr": {
+    "app.translation": "Französisch",
+    "app.title": "titre du app"
+  },
+  "it": {
+    "app.translation": "Italienisch",
+    "app.title": "title des application"
+  }
+}
