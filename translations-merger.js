@@ -1,7 +1,11 @@
 var _ = require('lodash');
+const path = require('path');
 var fs = require('fs'),
-    xlsx = require('node-xlsx'),
-    dataObject = xlsx.parse('./translations.xlsx');
+    xlsx = require('node-xlsx');
+var translationsFile = './src/assets/translations/translations.xlsx';
+var translationPath = path.dirname(translationsFile);
+
+dataObject = xlsx.parse(translationsFile);
 
 //merge content from excel into json files
 dataObject.forEach(function (worksheet) {
@@ -27,7 +31,7 @@ dataObject.forEach(function (worksheet) {
         if (err && !originalData) {
 
             //create directory for json file; only 1 depth supported
-            dirname = fileName.split('\\')[0];
+            dirname = path.dirname(fileName);
             try {
                 fs.mkdirSync(dirname);
                 console.log('created new directory: ' + dirname);
@@ -117,7 +121,7 @@ setTimeout(function () {
         files = [];
 
     dataObject = [];
-    finder = require('findit')('.'),
+    finder = require('findit')(translationPath),
         finder.on('file', function (file, stat) {
             if (file.indexOf('.json') > 0) {
                 files.push(file);
@@ -135,7 +139,7 @@ setTimeout(function () {
                     return console.log(err);
                 }
                 object = JSON.parse(data);
-                
+
                 //process translation-key
                 for (language in object) {
                     worksheetData.push(_getTranslations(object, language));
@@ -160,7 +164,7 @@ setTimeout(function () {
 
         setTimeout(function () {
             var excel = xlsx.build(dataObject);
-            fs.writeFile('translations.xlsx', excel, function (err) {
+            fs.writeFile(translationsFile, excel, function (err) {
                 if (err) {
                     console.err('could not write excel; error: ' + JSON.stringify(err));
                 } else {
