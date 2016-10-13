@@ -7,8 +7,6 @@ var path = require('path');
 var mainEntry = path.resolve(__dirname, 'src', 'app.ts');
 var colors = require('colors');
 var _ = require('lodash');
-var ProgressBarPlugin = require('progress-bar-webpack-plugin');
-
 module.exports = {
     //name of top level file
     entry: {
@@ -24,7 +22,7 @@ module.exports = {
     },
     //resolve, specify what kind of file types can be processed without specifying a file extension
     resolve: {
-        extensions: ['', '.webpack.js', '.web.js', '.ts', '.js', 'html', 'less']
+        extensions: ['', '.ts', '.js', 'html', 'less']
     },
     plugins: [
         new webpack.ProvidePlugin({ // jquery, lodash,angular and moment are now globaly available
