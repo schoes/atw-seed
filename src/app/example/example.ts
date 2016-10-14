@@ -3,7 +3,6 @@
  */
 import {moduleName as component} from './example.component';
 import {moduleName as sevice} from './example.service';
-import {moduleName as filter} from './example.filter';
 import {exampleURLConfig} from './example.config';
 
 import * as angular from 'angular';
@@ -14,6 +13,5 @@ export let moduleName = 'example';
 angular.module(moduleName, [
     component,
     sevice
-    // filter
 ])
     .config(exampleURLConfig);

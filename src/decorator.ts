@@ -12,17 +12,17 @@ function _getModule(moduleName: string): angular.IModule {
     return module;
 }
 
-interface IComponentOptions extends angular.IComponentOptions {
+interface ComponentOptions extends angular.IComponentOptions {
     module: string;
     /**
      * name of tag, such as vvn-component-name
      */
     selector: string;
 }
-export const Component = (options: IComponentOptions): Function => {
+export const Component = (options: ComponentOptions): Function => {
 
     return (controller: Function) => {
-        let component: IComponentOptions = _.assign(options, {controller});
+        let component: ComponentOptions = _.assign(options, {controller});
         if (typeof angular !== 'undefined') {
             _getModule(component.module)
                 .component(getComponentNameFromSelector(component), component);
@@ -30,40 +30,23 @@ export const Component = (options: IComponentOptions): Function => {
         return controller;
     };
 
-    function getComponentNameFromSelector(component: IComponentOptions): string {
+    function getComponentNameFromSelector(component: ComponentOptions): string {
         return _.camelCase(component.selector);
     }
 
 
 };
 
-interface IServiceOptions {
+interface ServiceOptions {
     module: string;
     serviceName: string;
 }
-export const Service = (options: IServiceOptions): Function => {
+export const Service = (options: ServiceOptions): Function => {
     return (service: Function) => {
         if (typeof angular !== 'undefined') {
             _getModule(options.module)
                 .service(options.serviceName, service);
         }
         return service;
-    };
-};
-
-interface IFilterOptions {
-    module: string;
-    filterName: string;
-}
-export const Filter = (options: IFilterOptions): Function => {
-    return (filter: Function): Function=> {
-        let filterConstructor = function () {
-            return filter().filter;
-        };
-        if (typeof angular !== 'undefined') {
-            _getModule(options.module)
-                .filter(options.filterName, filterConstructor);
-        }
-        return filterConstructor;
     };
 };
