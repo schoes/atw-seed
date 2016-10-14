@@ -11,15 +11,14 @@ var colors = require('colors');
 module.exports = {
     //name of top level file
     entry: {
-        app: mainEntry,
-        vendor: ['lodash', 'jquery', 'moment', 'angular', 'angular-translate', 'angular-route']
+        app: mainEntry
     },
     //an object containing your output configuration
     output: {
         path: dist,
         filename: '[name].js',
-        libraryTarget: 'var'
-        // publicPath: path.resolve(__dirname, 'dist')
+        libraryTarget: 'var',
+        externals: ['lodash', 'jquery', 'moment', 'angular', 'angular-translate', 'angular-route']
     },
     //resolve, specify what kind of file types can be processed without specifying a file extension
     resolve: {
@@ -27,9 +26,9 @@ module.exports = {
     },
     plugins: [
         new webpack.ProvidePlugin({ // jquery, lodash,angular and moment are now globaly available
-            '$': 'jquery',
-            '_': 'lodash',
-            'moment': 'moment'
+            $: 'jquery',
+            _: 'lodash',
+            moment: 'moment'
         }),
         new HtmlWebpackPlugin({
             template: indexHtml
@@ -58,10 +57,6 @@ module.exports = {
                 exclude: /node_modules/
             },
             {
-                test: /\.css$/,
-                loader: 'style-loader!css-loader'
-            },
-            {
                 test: /\.tpl\.html/,
                 loader: 'raw-loader'
             },
@@ -70,15 +65,6 @@ module.exports = {
                 test: /\.json$/,
                 loader: 'json-loader'
             }
-            // {
-            //     test: /[^.tpl]\.html/,
-            //     loader: 'file-loader?name=[name].[ext]',
-            //     exclude: /node_modules/
-            // },
-            // {
-            //     test: /\.(png|woff|woff2|eot|ttf)/,
-            //     loader: 'url-loader?limit=100000&name=[name].[ext]'
-            // }
         ]
     }
 };
