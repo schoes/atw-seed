@@ -6,14 +6,14 @@ import * as ngRoute from 'angular-route';
 require('angular-translate');
 
 import {moduleName as example} from './app/example/example';
-import {appRootURLConfig} from './config';
+import {appRootURLConfig, languageConfig} from './config';
 
 let appName = 'atw';
 let ngTranslate = 'pascalprecht.translate';
 
-// require('./index.html');
 require('./assets/images/favicon.ico');
 require('./assets/less/colors.less');
+require('./assets/translations/translations.json');
 
 
 angular.module(appName, [
@@ -23,5 +23,6 @@ angular.module(appName, [
 ])
 
     .config(appRootURLConfig)
+    .config(languageConfig)
 ;
 

@@ -8,3 +8,22 @@ export let appRootURLConfig = ($routeProvider: angular.route.IRouteProvider)=> {
         }
     });
 };
+
+// This is the initialization of the supported languages
+export let languageConfig = ($translateProvider: any) => {
+    let translationTable = require('./assets/translations/translations.json');
+    $translateProvider.useSanitizeValueStrategy('escape');
+
+    $translateProvider.translations('de', translationTable.de);
+    $translateProvider.translations('fr', translationTable.fr);
+    $translateProvider.translations('it', translationTable.it);
+
+    $translateProvider.determinePreferredLanguage(() => {
+        let supportedLang = ['de', 'fr', 'it'];
+        let browserLang = window.navigator.language.substring(0, 2);
+        let lang: string;
+        lang = _.includes(supportedLang, browserLang) ? browserLang : 'de';
+        lang = _.lowerCase(lang);
+        return lang;
+    });
+};

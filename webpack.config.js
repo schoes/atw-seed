@@ -65,10 +65,11 @@ module.exports = {
                 test: /\.tpl\.html/,
                 loader: 'raw-loader'
             },
-            // {
-            //     test: /\.json$/,
-            //     loader: 'json-loader'
-            // },
+
+            {
+                test: /\.json$/,
+                loader: 'json-loader'
+            }
             // {
             //     test: /[^.tpl]\.html/,
             //     loader: 'file-loader?name=[name].[ext]',

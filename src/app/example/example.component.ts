@@ -16,12 +16,12 @@ export class ExampleComponentCtrl {
     public name: string = 'Bill';
     public salutation: string;
 
-    public salute = (name: string)=> {
+    public salute = (name: string): void=> {
         this.salutation = this.exampleService.salutePerson(name);
     };
 
-    public $onInit = ()=> {
-        this.salutation = this.exampleService.salutePerson(this.name)
+    public $onInit = (): void=> {
+        this.salutation = this.exampleService.salutePerson(this.name);
     };
 
     // the name of the Service must match the given service name in the @Service declaration --> then the service will be injectet with angular properly
