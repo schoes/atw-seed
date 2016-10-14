@@ -1,8 +1,8 @@
 /**
  * Created by U112586 on 04.10.2016.
  */
-import {Component} from "../../decorator";
-import {ExampleService} from "./example.service";
+import {Component} from '../../decorator';
+import {ExampleService} from './example.service';
 
 export let moduleName = 'example.component';
 

@@ -1,26 +1,25 @@
-# ATW Seed
-## Angular/Typescript/webpack Seed
+# aTw seed
+Seed to create an angular app with Typescript 2 and webpack
+## Why do I need this seed
+It helps you to jump start an angular application based on Typescript and webpack without loosing your hair :-)
 
 # Installation
 ```bash
 npm install -g typescript webpack typings conventional-changelog-cli
 npm install
 ```
-* Typings breaking changes upgrade to Typings 1.0 [readme.md](https://github.com/typings/typings/blob/master/README.md)
-* Typescript 2.0 [release Notes](http://www.typescriptlang.org/docs/release-notes/typescript-2.0.html)
-
 # Startup
 ```bash
-npm start <environment>// Starts the super cool custom dev-server(.js) for the environment (default:local) check out ./config/proxy.config.js for more information
+npm start // starts your app with webpack-dev-server
 
 npm test // Starts the Karma in watch mode to execute the tests
 
 ```
-* Open browser @ http://localhost:8000/app
+* Open browser @ http://localhost:8080/webpack-dev-server
 
 # Translations
+The support for translations is also included in this seed
 ## Create translations
-The Script is under src/assets/translations
 ```bash
 npm run translations
 ```

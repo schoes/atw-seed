@@ -5,8 +5,9 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var path = require('path');
 var mainEntry = path.resolve(__dirname, 'src', 'app.ts');
+var indexHtml = path.resolve(__dirname, 'src', 'index.html');
+var dist = path.resolve(__dirname, 'dist');
 var colors = require('colors');
-var _ = require('lodash');
 module.exports = {
     //name of top level file
     entry: {
@@ -15,10 +16,10 @@ module.exports = {
     },
     //an object containing your output configuration
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: dist,
         filename: '[name].js',
-        libraryTarget: 'var',
-        publicPath: path.resolve(__dirname, 'dist')
+        libraryTarget: 'var'
+        // publicPath: path.resolve(__dirname, 'dist')
     },
     //resolve, specify what kind of file types can be processed without specifying a file extension
     resolve: {
@@ -31,7 +32,7 @@ module.exports = {
             'moment': 'moment'
         }),
         new HtmlWebpackPlugin({
-            template: './src/index.html'
+            template: indexHtml
         })
     ],
     devtool: 'inline-source-map',
@@ -64,19 +65,19 @@ module.exports = {
                 test: /\.tpl\.html/,
                 loader: 'raw-loader'
             },
-            {
-                test: /\.json$/,
-                loader: 'json-loader'
-            },
-            {
-                test: /[^.tpl]\.html/,
-                loader: 'file-loader?name=[name].[ext]',
-                exclude: /node_modules/
-            },
-            {
-                test: /\.(png|woff|woff2|eot|ttf)/,
-                loader: 'url-loader?limit=100000&name=[name].[ext]'
-            }
+            // {
+            //     test: /\.json$/,
+            //     loader: 'json-loader'
+            // },
+            // {
+            //     test: /[^.tpl]\.html/,
+            //     loader: 'file-loader?name=[name].[ext]',
+            //     exclude: /node_modules/
+            // },
+            // {
+            //     test: /\.(png|woff|woff2|eot|ttf)/,
+            //     loader: 'url-loader?limit=100000&name=[name].[ext]'
+            // }
         ]
     }
 };

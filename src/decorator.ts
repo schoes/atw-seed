@@ -56,13 +56,14 @@ interface IFilterOptions {
     filterName: string;
 }
 export const Filter = (options: IFilterOptions): Function => {
-    return (filter: Function): void=> {
+    return (filter: Function): Function=> {
+        let filterConstructor = function () {
+            return filter().filter;
+        };
         if (typeof angular !== 'undefined') {
-            var filterConstructor = function () {
-                return filter().filter;
-            };
             _getModule(options.module)
                 .filter(options.filterName, filterConstructor);
         }
+        return filterConstructor;
     };
 };

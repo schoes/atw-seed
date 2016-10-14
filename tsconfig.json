@@ -10,6 +10,7 @@
     "experimentalDecorators": true
   },
   "files": [
-    "./src/app.ts"
+    "./src/app.ts",
+    "./node_modules/@types/node/index.d.ts"
   ]
 }
