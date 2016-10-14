@@ -14,8 +14,15 @@ export let moduleName = 'example.component';
 export class ExampleComponentCtrl {
 
     public name: string = 'Bill';
-    public filterInput: number = 3;
-    public salutation = this.exampleService.salutePerson(this.name);
+    public salutation: string;
+
+    public salute = (name: string)=> {
+        this.salutation = this.exampleService.salutePerson(name);
+    };
+
+    public $onInit = ()=> {
+        this.salutation = this.exampleService.salutePerson(this.name)
+    };
 
     // the name of the Service must match the given service name in the @Service declaration --> then the service will be injectet with angular properly
     constructor(private exampleService: ExampleService) {

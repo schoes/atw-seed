@@ -1,4 +1,4 @@
 <div>Your first RWC 3 Typescript app is running</div>
-<input type="text" ng-model="$ctrl.name">
+<input type="text" ng-model="$ctrl.name" ng-change="$ctrl.salute($ctrl.name)">
 <div>{{$ctrl.salutation}}</div>
 <div>{{$ctrl.filterInput}}</div>
