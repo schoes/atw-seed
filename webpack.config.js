@@ -19,7 +19,6 @@ module.exports = {
         path: dist,
         filename: '[name].js',
         libraryTarget: 'var'
-        // publicPath: path.resolve(__dirname, 'dist')
     },
     //resolve, specify what kind of file types can be processed without specifying a file extension
     resolve: {

@@ -21,7 +21,7 @@ interface ComponentOptions extends angular.IComponentOptions {
 }
 export const Component = (options: ComponentOptions): Function => {
 
-    return (controller: Function) => {
+    return (controller: Function): Function=> {
         let component: ComponentOptions = _.assign(options, {controller});
         if (typeof angular !== 'undefined') {
             _getModule(component.module)
@@ -42,11 +42,42 @@ interface ServiceOptions {
     serviceName: string;
 }
 export const Service = (options: ServiceOptions): Function => {
-    return (service: Function) => {
+    return (service: Function): Function=> {
         if (typeof angular !== 'undefined') {
             _getModule(options.module)
                 .service(options.serviceName, service);
         }
         return service;
+    };
+};
+
+interface FilterOptions {
+    module: string;
+    filterName: string;
+}
+export const Filter = (options: FilterOptions): Function => {
+    return (filter: Function): Function=> {
+        let filterConstructor = (): Function => {
+            return filter().filter;
+        };
+        if (typeof angular !== 'undefined') {
+            _getModule(options.module)
+                .filter(options.filterName, filterConstructor);
+        }
+        return filterConstructor;
+    };
+};
+
+interface ConfigOptions {
+    module: string;
+}
+
+export const Config = (options: ConfigOptions): Function => {
+    return (config: Function): Function => {
+        if (typeof angular !== 'undefined') {
+            _getModule(options.module)
+                .config(config);
+        }
+        return config;
     };
 };
