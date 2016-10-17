@@ -1,15 +1,47 @@
-var _ = require('lodash');
-const path = require('path');
-var fs = require('fs'),
+const _ = require('lodash'),
+    path = require('path'),
+    fs = require('fs'),
     xlsx = require('node-xlsx');
-var translationsFile = './src/assets/translations/translations.xlsx';
-var translationPath = path.dirname(translationsFile);
 
-dataObject = xlsx.parse(translationsFile);
+let translationsFile = './src/assets/translations/translations.xlsx';
+let translationPath = path.dirname(translationsFile);
+
+let dataObject = xlsx.parse(translationsFile);
+
+function createTranslationObject(data) {
+    let headers = data[0], result = {};
+    for (let index = 1; index < headers.length; index++) {
+        result[headers[index]] = {};
+    }
+    return result;
+
+
+}
+_.forEach(dataObject, (worksheet)=> {
+    let fileName = worksheet.name.replace('|', '\\'),
+        data = worksheet.data;
+    let jsonTranslationObject = createTranslationObject(data);
+
+    data.shift();
+
+
+    let abslouteFileName = translationPath + '\\' + fileName;
+    fs.readFile(abslouteFileName, 'utf8', (error, fileData)=> {
+        if (error) {
+            try {
+                fs.mkdirSync(path.dirname(fileName));
+                console.log('created new directory: ' + dirname);
+            } catch (error) {
+                console.log('directory already exists?, error:' + JSON.stringify(error));
+            }
+        }
+    });
+
+});
 
 //merge content from excel into json files
 dataObject.forEach(function (worksheet) {
-    var fileName = worksheet.name.replace('|', '\\'),
+    var fileName = translationPath + '\\' + worksheet.name.replace('|', '\\'),
         data = worksheet.data;
     var jsonTranslationObject = {
         'de': {},
@@ -101,7 +133,6 @@ dataObject.forEach(function (worksheet) {
                 if (!_.find(translationObjects, key)) {
                     mergedTranslations[key] = value;
                 }
-                ;
             });
             return mergedTranslations;
         }
@@ -160,13 +191,13 @@ setTimeout(function () {
                 }
             }
             return jsonTranslations;
-        };
+        }
 
         setTimeout(function () {
             var excel = xlsx.build(dataObject);
             fs.writeFile(translationsFile, excel, function (err) {
                 if (err) {
-                    console.err('could not write excel; error: ' + JSON.stringify(err));
+                    console.error('could not write excel; error: ' + JSON.stringify(err));
                 } else {
                     console.log('excel written');
                 }
@@ -175,7 +206,7 @@ setTimeout(function () {
     });
 
     finder.on('error', function (err) {
-        console.error('error occurred: ' + JSON.stringify(error));
+        console.error('error occurred: ' + JSON.stringify(err));
     });
 
     function createWorksheet(file, translations) {
