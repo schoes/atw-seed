@@ -1,3 +1,14 @@
+<a name="0.0.3"></a>
+## [0.0.3](https://github.com/schoes/atw-seed/compare/v0.0.2...v0.0.3) (2016-10-14)
+
+
+### Features
+
+* **component:** add more logic to the component ([cafb0ca](https://github.com/schoes/atw-seed/commit/cafb0ca))
+* **translations:** the translations will now be loaded correctly ([1cb4fa1](https://github.com/schoes/atw-seed/commit/1cb4fa1))
+
+
+
 <a name="0.0.2"></a>
 ## [0.0.2](https://github.com/schoes/atw-seed/compare/5612dc3...v0.0.2) (2016-10-14)
 

@@ -1,6 +1,6 @@
 {
   "name": "atw",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "angular/Typescirpt/webpack seed",
   "main": "./src/app.ts",
   "typings": "./typings/index.d.ts",
