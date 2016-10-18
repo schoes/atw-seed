@@ -8,37 +8,6 @@ let translationPath = path.dirname(translationsFile);
 
 let dataObject = xlsx.parse(translationsFile);
 
-function createTranslationObject(data) {
-    let headers = data[0], result = {};
-    for (let index = 1; index < headers.length; index++) {
-        result[headers[index]] = {};
-    }
-    return result;
-
-
-}
-_.forEach(dataObject, (worksheet)=> {
-    let fileName = worksheet.name.replace('|', '\\'),
-        data = worksheet.data;
-    let jsonTranslationObject = createTranslationObject(data);
-
-    data.shift();
-
-
-    let abslouteFileName = translationPath + '\\' + fileName;
-    fs.readFile(abslouteFileName, 'utf8', (error, fileData)=> {
-        if (error) {
-            try {
-                fs.mkdirSync(path.dirname(fileName));
-                console.log('created new directory: ' + dirname);
-            } catch (error) {
-                console.log('directory already exists?, error:' + JSON.stringify(error));
-            }
-        }
-    });
-
-});
-
 //merge content from excel into json files
 dataObject.forEach(function (worksheet) {
     var fileName = translationPath + '\\' + worksheet.name.replace('|', '\\'),
