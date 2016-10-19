@@ -12,7 +12,7 @@
     "preversion": "karma start karma.prepush.conf.js && conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "version": "git add -A",
     "postversion": "git push && git push --tags",
-    "translations": "node translations-merger"
+    "translations": "node translations"
   },
   "pre-push": [
     "pre-push"

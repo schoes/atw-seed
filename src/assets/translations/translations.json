@@ -1,14 +1,20 @@
 {
-	"de": {
-		"app.translation": "Deutsch",
-		"app.title": "Title der App"
-	},
-	"fr": {
-		"app.translation": "Französisch",
-		"app.title": "titre du app"
-	},
-	"it": {
-		"app.translation": "Italienisch",
-		"app.title": "title des application"
-	}
+  "de": {
+    "app.translation": "Deutsch",
+    "app.title": "Title der App",
+    "app2.translation": "Deutsch",
+    "app2.title": "Title der App"
+  },
+  "fr": {
+    "app.translation": "Französisch",
+    "app.title": "titre du app",
+    "app2.translation": "Französisch",
+    "app2.title": "titre du app"
+  },
+  "it": {
+    "app.translation": "Italienisch",
+    "app.title": "title des application",
+    "app2.translation": "Italienisch",
+    "app2.title": "title des application"
+  }
 }
