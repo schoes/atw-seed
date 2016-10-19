@@ -15,7 +15,7 @@ npm start // starts your app with webpack-dev-server
 npm test // Starts the Karma in watch mode to execute the tests
 
 ```
-* Open browser @ http://localhost:8080/webpack-dev-server
+* Open browser @ http://localhost:8080/
 
 # Translations
 The support for translations is also included in this seed
@@ -25,11 +25,10 @@ npm run translations
 ```
 ### Working with translations
 
-For each JSON file a worksheet in Excel is created, while existing worksheets are already supplemented with new keys in JSON files. 
-The translations from Excel are updated in the JSON-Files (the Excel is the master for translations).
-The following directory and naming conventions must be followed:
-* All JSON files are stored in a subfolder of 'translations'.
-* All JSON files have the suffix .json
-* The name of the JSON-Files may not include the character '|'
-* Translations directly applied in Excel worksheets must have the name of the JSON-Files, with the prefix of the folder + '|', including: the Worksheet name 'test | test.json' leads to a JSON file named 'test.json 'directory' test '(with translations)
-* Not translated texts in Excel to be replaced by the placeholder 'undefined'
+* you can create a new worksheet inside your excel sheet
+* give your sheet a name
+* the first line must have the following structure : key | lang1 | lang2 | lang3
+```
+Example app.title | The App Title | Der Applikationstitel | Le titrle d'application
+```
+* view the examples in the translations.xlsx

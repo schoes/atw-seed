@@ -18,9 +18,10 @@ function createTranslationObject(data) {
 
 }
 let dataObject = xlsx.parse(translationsFile);
+let allTranslations = {};
 _.forEach(dataObject, (worksheet)=> {
     console.log('reading data from worksheet', colors.blue(worksheet.name));
-    let jsonTranslationObject = fs.readFileSync(destinationFileName) || createTranslationObject(worksheet.data);
+    let jsonTranslationObject = createTranslationObject(worksheet.data);
     let headers = worksheet.data[0];
     let languages = _.keys(jsonTranslationObject);
 
@@ -36,9 +37,10 @@ _.forEach(dataObject, (worksheet)=> {
         });
     });
 
-    fs.writeFileSync(destinationFileName, JSON.stringify(jsonTranslationObject, null, 2));
+    _.merge(allTranslations, jsonTranslationObject);
 
 });
+fs.writeFileSync(destinationFileName, JSON.stringify(allTranslations, null, 2));
 
 
 
