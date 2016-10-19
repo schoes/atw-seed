@@ -29,6 +29,8 @@ npm run translations
 * give your sheet a name
 * the first line must have the following structure : key | lang1 | lang2 | lang3
 ```
-Example app.title | The App Title | Der Applikationstitel | Le titrle d'application
+Example 
+key       | en            | de                    | fr
+app.title | The App Title | Der Applikationstitel | Le titrle d'application
 ```
 * view the examples in the translations.xlsx
