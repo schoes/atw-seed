@@ -6,7 +6,7 @@
   "typings": "./typings/index.d.ts",
   "scripts": {
     "test": "karma start karma.dev.conf.js",
-    "ci": "karama start karma.ci.conf.js",
+    "ci": "karma start karma.ci.conf.js",
     "start-proxy": "node dev-server",
     "start": "webpack-dev-server --content-base dist/",
     "pre-push": "karma start karma.prepush.conf.js",
