@@ -6,6 +6,7 @@
   "typings": "./typings/index.d.ts",
   "scripts": {
     "test": "karma start karma.dev.conf.js",
+    "ci": "karama start karma.ci.conf.js",
     "start-proxy": "node dev-server",
     "start": "webpack-dev-server --content-base dist/",
     "pre-push": "karma start karma.prepush.conf.js",
@@ -56,6 +57,7 @@
     "karma-jasmine": "^1.0.2",
     "karma-typescript-preprocessor2": "^1.1.1",
     "karma-webpack": "^1.7.0",
+    "karma-phantomjs-launcher": "^1.0.1",
     "less": "^2.7.0",
     "less-loader": "^2.2.3",
     "ng-annotate-loader": "^0.1.0",
