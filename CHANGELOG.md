@@ -1,3 +1,8 @@
+<a name="0.1.0"></a>
+# [0.1.0](https://github.com/schoes/atw-seed/compare/v0.0.4...v0.1.0) (2016-10-19)
+
+
+
 <a name="0.0.4"></a>
 ## [0.0.4](https://github.com/schoes/atw-seed/compare/v0.0.3...v0.0.4) (2016-10-17)
 
