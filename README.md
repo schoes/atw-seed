@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/schoes/atw-seed.svg?branch=master)](https://travis-ci.org/schoes/atw-seed)
 # aTw seed
 Seed to create an angular app with Typescript 2 and webpack
 ## Why do I need this seed
