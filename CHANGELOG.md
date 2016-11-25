@@ -1,3 +1,23 @@
+<a name="0.2.1"></a>
+## [0.2.1](https://github.com/schoes/atw-seed/compare/v0.2.0...v0.2.1) (2016-11-25)
+
+
+### Bug Fixes
+
+* **npm:** create right change log ([3fc861d](https://github.com/schoes/atw-seed/commit/3fc861d))
+
+
+
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/schoes/atw-seed/compare/v0.1.1...v0.2.0) (2016-11-25)
+
+
+### Features
+
+* **misc:** improve webpack building, change from less to sass , add a webpack test config ([ef5c8fe](https://github.com/schoes/atw-seed/commit/ef5c8fe))
+
+
+
 <a name="0.1.1"></a>
 ## [0.1.1](https://github.com/schoes/atw-seed/compare/v0.1.0...v0.1.1) (2016-10-21)
 
