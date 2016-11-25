@@ -1,3 +1,16 @@
+<a name="0.1.1"></a>
+## [0.1.1](https://github.com/schoes/atw-seed/compare/v0.1.0...v0.1.1) (2016-10-21)
+
+
+### Bug Fixes
+
+* **ci:** fix to let travis ci run correctly ([5287490](https://github.com/schoes/atw-seed/commit/5287490))
+* **karma:**  typo in karma.ci.conf ([6ecee26](https://github.com/schoes/atw-seed/commit/6ecee26))
+* **package.json:**  typo in npm run ci conf ([1531d41](https://github.com/schoes/atw-seed/commit/1531d41))
+* **package.json:** call the right npm module .es6 ([b937c29](https://github.com/schoes/atw-seed/commit/b937c29))
+
+
+
 <a name="0.1.0"></a>
 # [0.1.0](https://github.com/schoes/atw-seed/compare/v0.0.4...v0.1.0) (2016-10-19)
 
