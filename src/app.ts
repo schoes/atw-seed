@@ -12,7 +12,7 @@ let appName = 'atw';
 let ngTranslate = 'pascalprecht.translate';
 
 require('./assets/images/favicon.ico');
-require('./assets/less/colors.less');
+require('./assets/sass/colors.scss');
 require('./assets/translations/translations.json');
 
 

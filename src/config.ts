@@ -1,9 +1,10 @@
+import * as _ from 'lodash';
 /**
  * Created by U112586 on 04.10.2016.
  */
-export let appRootURLConfig = ($routeProvider: angular.route.IRouteProvider)=> {
+export let appRootURLConfig = ($routeProvider: angular.route.IRouteProvider) => {
     $routeProvider.when('/', {
-        redirectTo: ()=> {
+        redirectTo: () => {
             return '/example';
         }
     });

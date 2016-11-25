@@ -3,6 +3,7 @@
  */
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var path = require('path');
 var mainEntry = path.resolve(__dirname, 'src', 'app.ts');
 var indexHtml = path.resolve(__dirname, 'src', 'index.html');
@@ -15,20 +16,21 @@ module.exports = {
     },
     //an object containing your output configuration
     output: {
-        path: dist,
+        path: path.resolve(__dirname, 'dist'),
         filename: '[name].js',
         libraryTarget: 'var',
-        externals: ['lodash', 'jquery', 'moment', 'angular', 'angular-translate', 'angular-route']
+        externals: ['lodash', 'jquery', 'moment', 'angular', 'b2c-utils', 'angular-translate', 'angular-route']
     },
     //resolve, specify what kind of file types can be processed without specifying a file extension
     resolve: {
         extensions: ['', '.ts', '.js', 'html', 'less']
     },
     plugins: [
+        new ExtractTextPlugin("[name].css", {allChunks: false}),
         new webpack.ProvidePlugin({ // jquery, lodash,angular and moment are now globaly available
-            $: 'jquery',
-            _: 'lodash',
-            moment: 'moment'
+            '$': 'jquery',
+            '_': 'lodash',
+            'moment': 'moment'
         }),
         new HtmlWebpackPlugin({
             template: indexHtml
@@ -38,13 +40,12 @@ module.exports = {
     module: {
         loaders: [
             {
-                test: /\.ts$/,
-                loader: 'ts-loader!tslint-loader'
+                test: /\.scss$/,
+                loaders: ["style-loader", "css-loader?sourceMap", "sass-loader?sourceMap"]
             },
             {
-                test: /\.js$/,
-                loader: 'uglify-loader!ng-annotate-loader!jshint-loader!WebPackAngularTranslate.jsLoader()',
-                exclude: /node_modules/
+                test: /\.ts$/,
+                loader: 'ts-loader'
             },
             {
                 test: /\.(ico|svg|jpg)/,
@@ -52,18 +53,20 @@ module.exports = {
                 exclude: /node_modules/
             },
             {
-                test: /\.less$/,
-                loader: 'style-loader!css-loader!less-loader',
-                exclude: /node_modules/
+                test: /\.css$/,
+                loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
             },
             {
                 test: /\.tpl\.html/,
                 loader: 'raw-loader'
             },
-
             {
                 test: /\.json$/,
                 loader: 'json-loader'
+            },
+            {
+                test: /\.(png|woff|woff2|eot|ttf)/,
+                loader: 'url-loader?limit=100000&name=[name].[ext]'
             }
         ]
     }
